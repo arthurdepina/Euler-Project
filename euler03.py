@@ -20,9 +20,8 @@ def prime_numbers(limit):
     return primes
 
 
-def euler03(num) -> int:
-    for i in prime_numbers(floor(sqrt(num)))[::-1]:
-        if num % i == 0: return i
+def euler03(num):
+    return next(i for i in prime_numbers(floor(sqrt(num)))[::-1] if num % i == 0)
 
 
 print(euler03(600851475143))
