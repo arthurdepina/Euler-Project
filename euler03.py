@@ -6,8 +6,9 @@ What is the largest prime factor of the number
 """
 
 from math import floor, sqrt
+# import time
 
-def prime_numbers(limit):
+def erastotenes(limit):
     primes = []
     sieve = [True] * (limit + 1)
     
@@ -20,8 +21,15 @@ def prime_numbers(limit):
     return primes
 
 
-def euler03(num):
-    return next(i for i in prime_numbers(floor(sqrt(num)))[::-1] if num % i == 0)
+# start_time = time.time()
 
+
+def euler03(num):
+    return next(i for i in erastotenes(floor(sqrt(num)))[::-1] if num % i == 0)
 
 print(euler03(600851475143))
+
+
+# end_time = time.time()
+
+# print(f"Elapsed time: {end_time - start_time} seconds")
