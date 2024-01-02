@@ -18,3 +18,14 @@ def euler04() -> int:
     return palindrome
 
 print(euler04())
+
+
+# from itertools import product
+
+# def is_palindrome(num):
+#     return str(num) == str(num)[::-1]
+
+# multiples = ( (a, b) for a, b in product(xrange(100,999), repeat=2) if is_palindrome(a*b) )
+# print max(multiples, key=lambda (a,b): a*b)
+
+# https://stackoverflow.com/questions/12674389/highest-palindrome-with-3-digit-numbers-in-python
