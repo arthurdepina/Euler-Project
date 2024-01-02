@@ -10,7 +10,7 @@ What is the largest prime factor of the number
 from math import floor, sqrt
 # import time
 
-def erastotenes(limit):
+def eratosthenes(limit):
     primes = []
     sieve = [True] * (limit + 1)
     
@@ -27,7 +27,7 @@ def erastotenes(limit):
 
 
 def euler03(num):
-    return next(i for i in erastotenes(floor(sqrt(num)))[::-1] if num % i == 0)
+    return next(i for i in eratosthenes(floor(sqrt(num)))[::-1] if num % i == 0)
 
 print(euler03(600851475143))
 
