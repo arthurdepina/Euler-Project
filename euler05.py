@@ -36,15 +36,14 @@ def euler05(upper) -> int:
         print("current_pair ->", current_pair)
         done_with_pair = False
         for pair in pairs:
-            if pair[0] == current_pair[0]:
-                if pair[1] >= current_pair[1]:
-                    done_with_pair = True
-                    break
-                if pair[1] < current_pair[1]:
-                    pairs.remove(pair)
-                    pairs.append(current_pair)
-                    done_with_pair = True
-                    break
+            if pair[0] == current_pair[0] and pair[1] >= current_pair[1]:
+                done_with_pair = True
+                break
+            if pair[0] == current_pair[0] and pair[1] < current_pair[1]:
+                pairs.remove(pair)
+                pairs.append(current_pair)
+                done_with_pair = True
+                break
         if not done_with_pair:
             pairs.append(current_pair)
     for pair in pairs: total *= pair[0] ** pair[1]
@@ -52,4 +51,4 @@ def euler05(upper) -> int:
     return total
 
 
-print(euler05(20))
+print(euler05(10))
