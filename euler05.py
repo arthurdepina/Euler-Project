@@ -8,47 +8,34 @@ What is the smallest positive number that is evenly
 divisible by all of the numbers from 1 to 20.
 """
 
-from math import sqrt
+def euler05(upper):
+    i = 1
+    for k in range(1, upper + 1): # Testando se i é divível por todos até 21
+        if i % k > 0:  # Se o número atual não é divisível por k
+            for j in range(1, upper + 1):
+                # Encontrando um número j de modo que i * j seja divisível
+                # por k. Quando encontrarmos um valor j que se adeque a essa
+                # condição, todos os números i daqui para frente serão
+                # divisíveis por k.
+                if (i * j) % k == 0:
+                    i *= j
+                    break
+    # Essa função funciona porque a partir do momento
+    # que i é divisível por k, i * n para qualquer n
+    # inteiro também será divisível por k. Obviamente.
+    return i
 
-def is_prime(n): 
-    for a in range(2, int(sqrt(n))): 
-        if n % a == 0: 
-            return False 
-    return True 
+print(euler05(20))
 
+# Código original:
 
-def largest_prime_factor(n):
-    i = 2
-    a = n
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
-    return [n, max([i for i in range(a) if n ** i <= a])]
+# i = 1
+# for k in (range(1, 21)):
+#     if i % k > 0:
+#         for j in range(1, 21):
+#             if (i*j) % k == 0:
+#                 i *= j
+#                 break
+# print i
 
-
-def euler05(upper) -> int:
-    total = 1
-    pairs = []
-    for i in range(1, upper + 1):
-        current_pair = largest_prime_factor(i)
-        print("current_pair ->", current_pair)
-        done_with_pair = False
-        for pair in pairs:
-            if pair[0] == current_pair[0] and pair[1] >= current_pair[1]:
-                done_with_pair = True
-                break
-            if pair[0] == current_pair[0] and pair[1] < current_pair[1]:
-                pairs.remove(pair)
-                pairs.append(current_pair)
-                done_with_pair = True
-                break
-        if not done_with_pair:
-            pairs.append(current_pair)
-    for pair in pairs: total *= pair[0] ** pair[1]
-    print("pairs ->", pairs)
-    return total
-
-
-print(euler05(10))
+# Por lassevk em https://projecteuler.net/thread=5
