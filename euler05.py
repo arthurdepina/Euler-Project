@@ -10,20 +10,20 @@ divisible by all of the numbers from 1 to 20.
 
 def euler05(upper):
     i = 1
-    for k in range(1, upper + 1): # Testando se i é divível por todos até 21
-        if i % k > 0:  # Se o número atual não é divisível por k
+    for k in range(1, upper + 1):       # Testando se i é divível por todos até 21
+        if i % k > 0:                   # Se o número atual não é divisível por k
             for j in range(1, upper + 1):
                 # Encontrando um número j de modo que i * j seja divisível
                 # por k. Quando encontrarmos um valor j que se adeque a essa
                 # condição, todos os números i daqui para frente serão
                 # divisíveis por k.
-                if (i * j) % k == 0:
-                    i *= j
-                    break
+                if (i * j) % k == 0:    # Encontrando um número j de modo que i * j seja divisível por k
+                    i *= j              # Quando encontrarmos um valor j que se adeque a essa condição
+                    break               # todos os números i * ndaqui para frente serão divisíveis por k.
+    return i
     # Essa função funciona porque a partir do momento
     # que i é divisível por k, i * n para qualquer n
     # inteiro também será divisível por k. Obviamente.
-    return i
 
 print(euler05(20))
 
