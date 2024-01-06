@@ -21,7 +21,7 @@ def euler05(upper):
     # Essa função funciona porque a partir do momento
     # em que encontramos um j de modo que i = i * j é
     # múltiplo de k, todos os números i * n daqui para
-    # para frente serão divisíveis por k. Obrivamente.
+    # para frente serão divisíveis por k. Obviamente.
 
 print(euler05(20))
 
