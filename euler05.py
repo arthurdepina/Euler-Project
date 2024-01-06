@@ -27,6 +27,7 @@ print(euler05(20))
 
 # Código original:
 # Por lassevk em https://projecteuler.net/thread=5
+#
 # i = 1
 # for k in (range(1, 21)):
 #     if i % k > 0:

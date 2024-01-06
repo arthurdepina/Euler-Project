@@ -24,7 +24,8 @@ def eratosthenes_nth(limit, n):
 def euler07(n) -> int:
     return eratosthenes_nth(int(n * (log(n) + log(log(n)))), n)
 
-# end_time = time.time()
-# print(f"Elapsed time: {end_time - start_time} seconds")
 
 print(euler07(10001))
+
+# end_time = time.time()
+# print(f"Elapsed time: {end_time - start_time} seconds")
