@@ -15,7 +15,7 @@ def euler05(upper):
             for j in range(1, upper + 1): # Encontrando um número j de modo que i * j seja divisível por k.
                 if (i * j) % k == 0:      # Encontrando um número j de modo que i * j seja divisível por k
                     i *= j                # Quando encontrarmos um valor j que se adeque a essa condição
-                    break                 # todos os números i * ndaqui para frente serão divisíveis por k.
+                    break                 # todos os números i * n daqui para frente serão divisíveis por k.
     return i
 
     # Essa função funciona porque a partir do momento
