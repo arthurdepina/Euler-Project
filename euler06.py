@@ -20,5 +20,4 @@ def euler06(n) -> int:
     return sum([i for i in range(1, n + 1)])**2 - sum([i**2 for i in range(1, n + 1)])
 
 
-print(euler06(100)) # Espera-se 2640
-# print(euler06(100))
+print(euler06(100))
