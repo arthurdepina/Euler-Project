@@ -8,7 +8,9 @@ What is the largest prime factor of the number
 """
 
 from math import floor, sqrt
+
 # import time
+# start_time = time.time()
 
 def eratosthenes(limit):
     primes = []
@@ -23,15 +25,11 @@ def eratosthenes(limit):
     return primes
 
 
-# start_time = time.time()
-
-
 def euler03(num):
     return next(i for i in eratosthenes(floor(sqrt(num)))[::-1] if num % i == 0)
 
+
 print(euler03(600851475143))
 
-
 # end_time = time.time()
-
 # print(f"Elapsed time: {end_time - start_time} seconds")

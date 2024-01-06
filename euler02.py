@@ -17,4 +17,5 @@ def euler02(upper) -> int:
         if past %2 == 0: total += past
     return total
 
+
 print(euler02(4000000))

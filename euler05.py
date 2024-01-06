@@ -26,7 +26,7 @@ def euler05(upper):
 print(euler05(20))
 
 # Código original:
-
+# Por lassevk em https://projecteuler.net/thread=5
 # i = 1
 # for k in (range(1, 21)):
 #     if i % k > 0:
@@ -35,5 +35,3 @@ print(euler05(20))
 #                 i *= j
 #                 break
 # print i
-
-# Por lassevk em https://projecteuler.net/thread=5

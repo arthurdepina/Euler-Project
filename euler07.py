@@ -8,7 +8,6 @@ What is the 10.001st prime number?
 from math import log
 
 # import time
-
 # start_time = time.time()
 
 def eratosthenes_nth(limit, n):
