@@ -34,7 +34,7 @@ stop = False
 count = 0
 maior = False
 
-def product_sum(k, current_array=[]):
+def product_sum(k, start=1, current_array=[]):
     global p_s
     if len(current_array) == k:
         # print(current_array)
@@ -43,8 +43,8 @@ def product_sum(k, current_array=[]):
             p_s = sum_array
             return
         return
-    for i in range(1, k + 1):
-        product_sum(k, current_array + [i])
+    for i in range(start, k + 1):
+        product_sum(k, i, current_array + [i])
 
 # product_sum(6)
 # print(p_s)
@@ -56,13 +56,17 @@ def euler88(upper) -> int:
     for i in range(2, upper + 1):#
         # print(i, end=" ")
         product_sum(i)
-        # print(p_s)
+        # print(p_s, end="\n\n")
         if p_s not in product_sums: product_sums.append(p_s)
         p_s = 9223372036854775807
         stop = False
     return sum(product_sums)
 
 
-print(euler88(6))  # 30
-# print(euler88(12)) # 61
+# print(euler88(6))  # 30
+# import time
+# start_time = time.time()
+print(euler88(12)) # 61
 # print(euler88(12000))
+# end_time = time.time()
+# print(f"Elapsed time: {end_time - start_time} seconds")
