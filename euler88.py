@@ -26,7 +26,8 @@ In fact, as the complete set of minimal product-sum numbers for
 What is the sum of all the minimal product-sum numbers for
 2 <= k <= 12000?
 """
-import time, math
+
+import math, time
 from functools import cache
 start_time = time.time()
 
@@ -47,11 +48,9 @@ def poss_fact_length(n, new_n, product, a_sum, count):
 
     if product > n or a_sum > n:
         return []
-    
     if product == n and a_sum == n:
         return [count]
-    
-    if n == 1:
+    if new_n == 1:
         return [count + (n - a_sum)]
     
     divs = divisors(new_n)
@@ -67,11 +66,11 @@ def euler88(upper) -> int:
     for num in range(4, 2*upper + 1):
         for k in set(poss_fact_length(num, num, 1, 0, 0)): # this set contains all lengths (k) for which num is the product-sum
             minimal_product_sums[k] = min(minimal_product_sums[k], num)
-    minimal_product_sums = minimal_product_sums[2:upper + 1] # we only want m_p_s's from 2 <= k <= limit
+    minimal_product_sums = minimal_product_sums[2:upper + 1]
+    # up here, we only want m_p_s's from 2 <= k <= limit
     # so we're cutting index (k) 0, 1 and index's > limit.
     return sum(set(minimal_product_sums))
 
-if __name__ == "__main__":
-    print(euler88(12000))
-    print("--- %s seconds ---" % (time.time() - start_time))
 
+print(euler88(12000))
+print("%s seconds" % (time.time() - start_time))
