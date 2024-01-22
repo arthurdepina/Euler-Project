@@ -26,47 +26,52 @@ In fact, as the complete set of minimal product-sum numbers for
 What is the sum of all the minimal product-sum numbers for
 2 <= k <= 12000?
 """
+import time, math
+from functools import cache
+start_time = time.time()
 
-from functools import reduce
+def divisors(n):
+    divisors = [n]
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            divisors.append(i)
+            divisors.append(int(n/i))
+    return sorted(set(divisors))
 
-p_s = 9223372036854775807
-stop = False
-count = 0
-maior = False
+@cache
+def poss_fact_length(n, new_n, product, a_sum, count):
+    possibilities = []
 
-def product_sum(k, start=1, current_array=[]):
-    global p_s
-    if len(current_array) == k:
-        # print(current_array)
-        sum_array = sum(current_array)
-        if (sum_array == reduce((lambda x, y: x * y), current_array)) and sum_array < p_s:
-            p_s = sum_array
-            return
-        return
-    for i in range(start, k + 1):
-        product_sum(k, i, current_array + [i])
+    product = product
+    a_sum = a_sum
 
-# product_sum(6)
-# print(p_s)
+    if product > n or a_sum > n:
+        return []
+    
+    if product == n and a_sum == n:
+        return [count]
+    
+    if n == 1:
+        return [count + (n - a_sum)]
+    
+    divs = divisors(new_n)
+
+    for div in divs:
+        possibilities += poss_fact_length(n, new_n//div, product * div, a_sum + div, count + 1)
+
+    return possibilities
+    
 
 def euler88(upper) -> int:
-    global p_s
-    global stop
-    product_sums = []
-    for i in range(2, upper + 1):#
-        # print(i, end=" ")
-        product_sum(i)
-        # print(p_s, end="\n\n")
-        if p_s not in product_sums: product_sums.append(p_s)
-        p_s = 9223372036854775807
-        stop = False
-    return sum(product_sums)
+    minimal_product_sums = [float('inf')] * (2 * upper + 1)
+    for num in range(4, 2*upper + 1):
+        for k in set(poss_fact_length(num, num, 1, 0, 0)): # this set contains all lengths (k) for which num is the product-sum
+            minimal_product_sums[k] = min(minimal_product_sums[k], num)
+    minimal_product_sums = minimal_product_sums[2:upper + 1] # we only want m_p_s's from 2 <= k <= limit
+    # so we're cutting index (k) 0, 1 and index's > limit.
+    return sum(set(minimal_product_sums))
 
+if __name__ == "__main__":
+    print(euler88(12000))
+    print("--- %s seconds ---" % (time.time() - start_time))
 
-# print(euler88(6))  # 30
-# import time
-# start_time = time.time()
-print(euler88(12)) # 61
-# print(euler88(12000))
-# end_time = time.time()
-# print(f"Elapsed time: {end_time - start_time} seconds")
