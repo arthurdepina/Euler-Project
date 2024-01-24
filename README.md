@@ -1,1 +1,4 @@
-Resolvendo os 100 primeiros problemas em projecteuler.net
+Resolvendo alguns problemas em projecteuler.net
+<br>
+Leia a respeito do Project Euler em projecteuler.net/about
+<br>
