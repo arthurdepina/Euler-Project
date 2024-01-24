@@ -23,13 +23,9 @@ from math import sqrt
 def euler09(x) -> int:
     for s in range(1, 450):
         for t in range(1, 450):
-            if 3*sqrt(2*s*t) + 2*s + 2*t == 1000:
-                r = sqrt(2*s*t)
-                a = r + s
-                b = r + t
-                c = r + s + t
-                print(f"a = {a}, b = {b}, c = {c}")
-                return a*b*c
+            if 3*sqrt(2*s*t) + 2*s + 2*t == x:
+                r = int(sqrt(2*s*t))
+                return (r + s)*(r + t)*(r + s + t)
 
 
 print(euler09(1000))
