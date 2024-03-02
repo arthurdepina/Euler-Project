@@ -118,7 +118,7 @@ def euler011(g: list[list[int]]) -> int:
 
     for diag in diagonals:
         max_diagonal = max(max_diagonal,
-                           prod(diag))
+                           max_prod_array(diag))
     print("max_diagonal =", max_diagonal)
     
     return max(max_line, max_column, max_diagonal)
